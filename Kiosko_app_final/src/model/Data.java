@@ -13,9 +13,10 @@ public class Data {
     private ResultSet rs;
 
     private List<Producto> listaProducto;
+    private List<Tipo_producto>   listaTipoProducto ;
 
     public Data() throws ClassNotFoundException, SQLException {
-        con = new Conexion("localhost", "root", "", "bd_kiosko");
+        con = new Conexion("localhost", "root", "123456", "bd_kiosko");
     }
 
     public void registrar_producto(Producto p) throws SQLException {
@@ -133,5 +134,26 @@ public class Data {
             stock = rs.getInt(1);
         }
         return stock;
+    }
+     public List<Tipo_producto> getListaTipo() throws SQLException {
+        query = "SELECT * FROM tipo_producto";
+
+        listaTipoProducto = new ArrayList<>();
+        Tipo_producto t;
+
+        rs = con.ejecutarSelect(query);
+        while (rs.next()) {
+            t = new Tipo_producto();
+
+            t.setId(rs.getInt(1));
+            t.setDescripcion(rs.getString(2));
+       
+            
+
+            listaTipoProducto.add(t);
+
+        }
+        con.desconectar();
+        return listaTipoProducto;
     }
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Boleta;
 import model.Data;
 import model.Producto;
@@ -22,6 +23,7 @@ public class App extends javax.swing.JFrame {
     private int total_boleta;
     private List<Boleta> listaBoleta;
     private int fila;
+    
 
     public App() {
         try {
@@ -29,8 +31,11 @@ public class App extends javax.swing.JFrame {
             cantidad = 0;
             total_boleta = 0;
             d = new Data();
+            Panel2 p= new Panel2();
+            p.setVisible(false);
             cargarTabla();
             listaBoleta = new ArrayList<>();
+         
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -56,6 +61,10 @@ public class App extends javax.swing.JFrame {
         btn_buscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         lbl_mensaje = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +129,28 @@ public class App extends javax.swing.JFrame {
 
         lbl_mensaje.setText("Estado");
 
+        jMenu1.setText("Opciones");
+
+        jMenuItem1.setText("Productos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Salir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,7 +210,7 @@ public class App extends javax.swing.JFrame {
                     .addComponent(btnAgregar)
                     .addComponent(jLabel1)
                     .addComponent(btn_generarVenta))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -270,6 +301,26 @@ public class App extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            this.setVisible(false);
+            Panel2 panel= new Panel2();
+            panel.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "¿Desea salir?", "Seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                  System.exit( 0 ); 
+                
+            }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -289,6 +340,10 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
