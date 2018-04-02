@@ -222,6 +222,7 @@ public class Panel2 extends javax.swing.JFrame {
          try {
             int filaSeleccionada = tablaProducto.getSelectedRow();
             String id = tablaProducto.getValueAt(filaSeleccionada, 0).toString();
+             System.out.println("ID: "+id);
             Producto p = d.getProducto(Integer.parseInt(id));
             if (JOptionPane.showConfirmDialog(this, "¿Desea borrar?", "Seguridad", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 d.eliminar_producto(Integer.parseInt(id));

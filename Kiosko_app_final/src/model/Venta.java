@@ -3,6 +3,7 @@ package model;
 public class Venta {
     private int id;
     private int total;
+    private String fecha;
 
     public Venta() {
     }
@@ -22,6 +23,16 @@ public class Venta {
     public void setTotal(int total) {
         this.total = total;
     }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
+    
     
     
 }

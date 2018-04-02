@@ -1,2 +1,42 @@
-
-
+--INSERT tipo_producto
+insert into tipo_producto values(NULL, 'Aseo');
+insert into tipo_producto values(NULL, 'Hogar');
+insert into tipo_producto values(NULL, 'Liquido');
+insert into tipo_producto values(NULL, 'Abarrote');
+--INSERT producto
+insert into producto values(null, 1, 'Plumero', 2990, 15);
+insert into producto values(null, 2, 'Comedor', 45000, 5);
+insert into producto values(null, 3, 'Coca-Cola', 1500, 10);
+insert into producto values(null, 4, 'Snickers', 800, 40);
+insert into producto values(null, 1, 'Paño', 500, 50);
+insert into producto values(null, 2, 'Silla', 10000, 10);
+insert into producto values(null, 3, 'Kem-Extream', 1500, 20);
+insert into producto values(null, 4, 'Golazo', 200, 45);
+insert into producto values(null, 1, 'Lustra Muebles', 2000, 30);
+insert into producto values(null, 2, 'Aspiradora', 45000, 12);
+insert into producto values(null, 3, 'Sprite', 2000, 20);
+insert into producto values(null, 4, 'Mantecol', 300, 53);
+insert into producto values(null, 1, 'Limpia Vidrios', 2000, 20);
+insert into producto values(null, 2, 'Set de Cubiertos', 5000, 40);
+insert into producto values(null, 3, 'Crush', 2000, 20);
+insert into producto values(null, 4, 'Papas Lays', 2500, 30);
+insert into producto values(null, 1, 'Pato Purific', 3500, 40);
+insert into producto values(null, 2, 'Set de Vasos', 4500, 20);
+insert into producto values(null, 3, 'Chamito', 1000, 35);
+insert into producto values(null, 4, 'Nikolo', 350, 55);
+insert into producto values(null, 1, 'Poet', 2500, 30);
+insert into producto values(null, 2, 'Escritorio de madera', 15000, 3);
+insert into producto values(null, 3, 'Ice-Tea', 990, 15);
+insert into producto values(null, 4, 'Chesters', 1500, 18);
+insert into producto values(null, 1, 'Esponja', 300, 55);
+insert into producto values(null, 2, 'Lcd', 400000, 10);
+insert into producto values(null, 3, 'Nectar Watts', 500, 20);
+insert into producto values(null, 4, 'Super 8', 150, 46);
+insert into producto values(null, 1, 'Omo', 6500, 15);
+insert into producto values(null, 2, 'Velador', 15000, 12);
+insert into producto values(null, 3, 'Agua +', 750, 16);
+insert into producto values(null, 4, 'Ramitas de queso', 900, 26);
+insert into producto values(null, 1, 'Cloro', 1200, 45);
+insert into producto values(null, 2, 'Alfombra', 5000, 23);
+insert into producto values(null, 3, 'Ron Barcelo', 10000, 29);
+insert into producto values(null, 4, 'Chocman', 500, 42);

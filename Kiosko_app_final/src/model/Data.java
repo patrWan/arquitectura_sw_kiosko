@@ -13,10 +13,12 @@ public class Data {
     private ResultSet rs;
 
     private List<Producto> listaProducto;
-    private List<Tipo_producto>   listaTipoProducto ;
+    private List<Tipo_producto> listaTipoProducto;
+    private List<Venta> listaVentas;
+    private List<Boleta> listaboletas;
 
     public Data() throws ClassNotFoundException, SQLException {
-        con = new Conexion("localhost", "root", "123456", "bd_kiosko");
+        con = new Conexion("localhost", "root", "", "bd_kiosko");
     }
 
     public void registrar_producto(Producto p) throws SQLException {
@@ -77,7 +79,7 @@ public class Data {
     public void generar_venta(List<Boleta> listaBoleta, int total) throws SQLException {//listaBoleta lleva los datos necesarios para hacer el insert en la tabla boleta.
         //INSERT A VENTA, NECESARIO PARA LUEGO HACER EL INSERT EN BOLETA.
         //El total se calcula antes.
-        query = "INSERT INTO venta VALUES(NULL, " + total + ");";
+        query = "INSERT INTO venta VALUES(NULL, " + total + ",NOW());";
         con.ejecutar(query);
         //RESCATO EL ID DE LA VENTA ACTUAL, PARA LUEGO HACER EL INSERT EN BOLETA.
         int boleta = 0;
@@ -91,10 +93,10 @@ public class Data {
 
         //SE REGISTRA LA VENTA(BOLETA).
         for (Boleta b : listaBoleta) {
-            query = "INSERT INTO boleta VALUES(NULL, " + b.getId_producto() + "," + boleta + " , " + b.getCantidad() + ", " + b.getSubtotal() + ", NOW());";
+            query = "INSERT INTO boleta VALUES(NULL, " + b.getId_producto() + "," + boleta + " , " + b.getCantidad() + ", " + b.getSubtotal() + ");";
             con.ejecutar(query);
             //FALTA QUITAR LA CANTIDAD COMPRADA DEL STOCK.
-            query = "UPDATE producto SET stock = stock - "+b.getCantidad()+" WHERE id = "+b.getId_producto()+";";
+            query = "UPDATE producto SET stock = stock - " + b.getCantidad() + " WHERE id = " + b.getId_producto() + ";";
             con.ejecutar(query);
         }
     }
@@ -124,18 +126,19 @@ public class Data {
 
         return p;
     }
-    
-    public int getStock(int id) throws SQLException{
+
+    public int getStock(int id) throws SQLException {
         int stock = 0;
-        query = "SELECT stock FROM producto WHERE id = "+id+";";
+        query = "SELECT stock FROM producto WHERE id = " + id + ";";
         rs = con.ejecutarSelect(query);
-        
+
         if (rs.next()) {
             stock = rs.getInt(1);
         }
         return stock;
     }
-     public List<Tipo_producto> getListaTipo() throws SQLException {
+
+    public List<Tipo_producto> getListaTipo() throws SQLException {
         query = "SELECT * FROM tipo_producto";
 
         listaTipoProducto = new ArrayList<>();
@@ -147,8 +150,6 @@ public class Data {
 
             t.setId(rs.getInt(1));
             t.setDescripcion(rs.getString(2));
-       
-            
 
             listaTipoProducto.add(t);
 
@@ -156,4 +157,71 @@ public class Data {
         con.desconectar();
         return listaTipoProducto;
     }
+
+    public List<Venta> getListaVenta() throws SQLException {
+        listaVentas = new ArrayList<>();
+        query = "SELECT * FROM venta;";
+        rs = con.ejecutarSelect(query);
+        Venta v = null;
+        while (rs.next()) {
+            v = new Venta();
+            v.setId(rs.getInt(1));
+            v.setTotal(rs.getInt(2));
+            v.setFecha(rs.getString(3));
+            listaVentas.add(v);
+        }
+        con.desconectar();
+        return listaVentas;
+    }
+    
+    public List<Venta> getListaVentaPorMes(int mes, int anio) throws SQLException {
+        listaVentas = new ArrayList<>();
+        query = "SELECT * FROM venta WHERE MONTH(fecha) = "+mes+" AND YEAR(fecha) = "+anio+" ;";
+        rs = con.ejecutarSelect(query);
+        Venta v = null;
+        while (rs.next()) {
+            v = new Venta();
+            v.setId(rs.getInt(1));
+            v.setTotal(rs.getInt(2));
+            v.setFecha(rs.getString(3));
+            listaVentas.add(v);
+        }
+        con.desconectar();
+        return listaVentas;
+    }
+    
+     public Venta getVenta(int id) throws SQLException {
+        query = "SELECT * FROM venta WHERE id = "+id+";";
+        rs = con.ejecutarSelect(query);
+        Venta v = null;
+        if (rs.next()) {
+            v = new Venta();
+            v.setId(rs.getInt(1));
+            v.setTotal(rs.getInt(2));
+            v.setFecha(rs.getString(3));
+            listaVentas.add(v);
+        }
+        con.desconectar();
+        return v;
+    }
+    
+    public List<Boleta> getListaBoleta(int id_venta) throws SQLException{
+        listaboletas = new ArrayList<>();
+        query = "SELECT id_producto, cantidad, subtotal FROM boleta WHERE id_venta = "+id_venta+";";
+        Boleta b = null;
+        rs = con.ejecutarSelect(query);
+        
+        while (rs.next()) {            
+            b = new Boleta();
+            b.setId_producto(rs.getInt(1));
+            b.setCantidad(rs.getInt(2));
+            b.setSubtotal(rs.getInt(3));
+            
+            listaboletas.add(b);
+        }
+        con.desconectar();
+        
+        return listaboletas;
+    }
+
 }

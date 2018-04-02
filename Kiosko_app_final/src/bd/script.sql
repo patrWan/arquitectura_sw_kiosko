@@ -1,59 +1,62 @@
-dROP DATABASE bd_kiosko;
+DROP DATABASE bd_kiosko;
  
-crear la base de datos bd_kiosko;
+create database bd_kiosko;
  
 use bd_kiosko;
  
-crear tabla tipo_producto (
+create table tipo_producto(
 id int not null auto_increment,
-descripcion varchar (150),
-clave principal (id)
+descripcion varchar(150),
+primary key (id)
 );
  
-crear tabla de producto (
+create table producto(
 id int not null auto_increment,
 id_tipo int,
-nombre varchar (150),
+nombre varchar(150),
 precio int,
 stock int,
-clave principal (id),
-clave foránea (id_tipo) hace referencia a tipo_producto (id)
+primary key (id),
+foreign key (id_tipo) references tipo_producto(id)
 );
- 
-crear venta de mesa
+ --SE CAMBIO LA FECHA A VENTA
+create table venta(
 id int not null auto_increment,
 total int,
-clave principal (id)
+fecha datetime,
+primary key (id)
 );
  
-crear tabla boleta (
+create table boleta(
 id int not null auto_increment,
 id_producto int,
 id_venta int,
 cantidad int,
 subtotal int,
-fecha datetime,
-clave principal (id),
-clave externa (id_producto) hace referencia al producto (id),
-clave foránea (id_venta) referencias venta (id)
+--fecha datetime,
+primary key(id),
+foreign key (id_producto) references producto(id),
+foreign key (id_venta)references venta(id)
 );
  
  
-SELECCIONE la ID FROM venta ORDEN POR ID DESC LIMIT 1;
-SELECCIONE tipo_producto.descripcion 'Tipo Prodcuto', producto.nombre, producto.precio, producto.stock
-DESDE tipo_producto, producto
-DONDE tipo_producto.id = producto.id_tipo;
+SELECT id FROM venta ORDER BY id DESC LIMIT 1;
+SELECT tipo_producto.descripcion 'Tipo Prodcuto', producto.nombre, producto.precio, producto.stock
+FROM tipo_producto, producto
+WHERE tipo_producto.id = producto.id_tipo;
  
-SELECCIONAR nombre, precio, stock FROM producto WHERE nombre LIKE '% c%';
+SELECT nombre,precio, stock FROM producto WHERE nombre LIKE '%c%';
  
-ELIMINAR DE producto WHERE id = '1';
+DELETE FROM producto WHERE id = '1';
  
-ACTUALIZACIÓN producto SET stock = stock - 2 WHERE id = 2;
+UPDATE producto SET stock = stock - 2 WHERE id = 2;
  
-SELECCIONE stock FROM producto WHERE id = 1;
+SELECT stock FROM producto WHERE id = 1;
  
-seleccione * del producto;
-seleccione * de tipo_producto;
-seleccione * de venta;
-seleccione * de boleta;
+select * from producto;
+select * from tipo_producto;
+select * from venta;
+select * from boleta;
 
+SELECT id_producto, cantidad, subtotal FROM boleta WHERE id_venta = 1;
+SELECT * FROM venta WHERE MONTH(fecha) = 5 AND YEAR(fecha) = 2018 ;
