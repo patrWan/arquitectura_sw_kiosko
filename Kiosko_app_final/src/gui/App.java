@@ -363,6 +363,7 @@ public class App extends javax.swing.JFrame {
                 lbl_mensaje.setBackground(Color.red);
                 lbl_mensaje.setText("Stock Insuficiente.");
             }
+            txtCantidad.setText(null);
 
         } catch (Exception e) {
 
