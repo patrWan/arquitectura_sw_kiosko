@@ -18,7 +18,7 @@ public class Data {
     private List<Boleta> listaboletas;
 
     public Data() throws ClassNotFoundException, SQLException {
-        con = new Conexion("localhost", "root", "", "bd_kiosko");
+        con = new Conexion("localhost", "root", "123456", "bd_kiosko");
     }
 
     public void registrar_producto(Producto p) throws SQLException {
