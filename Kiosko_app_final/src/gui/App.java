@@ -425,6 +425,7 @@ public class App extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         cargarTablaVenta();
         jFrame_historial_ventas.setVisible(true);
+        jFrame_historial_ventas.setBounds(200, 350, 800, 300);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void tabla_ventasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_ventasMouseClicked
