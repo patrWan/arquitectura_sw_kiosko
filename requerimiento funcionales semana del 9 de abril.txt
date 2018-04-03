@@ -1,0 +1,15 @@
+tabla estado vacia
+botonesbuscar:fuera
+tablas sin contenido
+boton eliminar fuera
+colocar iconos
+generar ventas :mensaje de confirmacio con el monto
+validar TODO
+
+ toda las ventanas deben estar centradas y con titulos
+
+usar tabbed pane
+
+filtro por rango de fechas y ademas muestra la suma total de ventas
+
+fecha con formato datetime 29 de marzo de 2018  a las 14:02:56
