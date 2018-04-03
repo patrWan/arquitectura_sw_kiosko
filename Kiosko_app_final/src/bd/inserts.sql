@@ -3,6 +3,9 @@ insert into tipo_producto values(NULL, 'Aseo');
 insert into tipo_producto values(NULL, 'Hogar');
 insert into tipo_producto values(NULL, 'Liquido');
 insert into tipo_producto values(NULL, 'Abarrote');
+insert into tipo_producto values(NULL, 'Diarios');
+insert into tipo_producto values(NULL, 'Revistas');
+insert into tipo_producto values(NULL, 'Raspes');
 --INSERT producto
 insert into producto values(null, 1, 'Plumero', 2990, 15);
 insert into producto values(null, 2, 'Comedor', 45000, 5);
@@ -40,3 +43,38 @@ insert into producto values(null, 1, 'Cloro', 1200, 45);
 insert into producto values(null, 2, 'Alfombra', 5000, 23);
 insert into producto values(null, 3, 'Ron Barcelo', 10000, 29);
 insert into producto values(null, 4, 'Chocman', 500, 42);
+
+insert into producto values(null, 5, 'Ultimas Noticias', 1000, 50);
+insert into producto values(null, 5, 'La Tercera', 2000, 50);
+insert into producto values(null, 5, 'La Cuarta', 500, 50);
+insert into producto values(null, 5, 'El Condor', 300, 50);
+insert into producto values(null, 5, 'La Nacion', 500, 50);
+insert into producto values(null, 5, 'The Clinic', 700, 50);
+insert into producto values(null, 5, 'La Segunda', 500, 50);
+insert into producto values(null, 5, 'La estrella', 1000, 50);
+insert into producto values(null, 5, 'Chañarsiño', 800, 50);
+insert into producto values(null, 5, 'El Trabajo', 700, 50);
+
+insert into producto values(null, 6, 'Caras', 1200, 50);
+insert into producto values(null, 6, 'Paula', 1000, 50);
+insert into producto values(null, 6, 'Cosas', 1500, 50);
+insert into producto values(null, 6, 'Triunfo', 2000, 50);
+insert into producto values(null, 6, 'Que Pasa', 1000, 50);
+insert into producto values(null, 6, 'Mujer', 1500, 50);
+insert into producto values(null, 6, 'El Grafico', 2500, 50);
+insert into producto values(null, 6, 'Cañamo', 1500, 50);
+insert into producto values(null, 6, 'Nintendo', 2000, 50);
+insert into producto values(null, 6, 'Retro Gamer', 1500, 50);
+
+insert into producto values(null, 7, 'Super Sueldo', 700, 20);
+insert into producto values(null, 7, 'Super Sueldo De Por Vida', 1000, 15);
+insert into producto values(null, 7, 'Chinita de la Suerte', 500, 20);
+insert into producto values(null, 7, 'Combo soñado', 1000, 50);
+insert into producto values(null, 7, 'Raspe', 1300, 20);
+insert into producto values(null, 7, 'El Gran Rajá', 900, 50);
+insert into producto values(null, 7, 'Vacaiones Soñadas', 2000, 25);
+insert into producto values(null, 7, 'Lunita', 500, 50);
+insert into producto values(null, 7, 'Buda de la Suerte', 1000, 20);
+insert into producto values(null, 7, 'Raspe su Sueldo', 1700, 10);
+
+insert into producto values(null, 3, 'Frugo', 300, 20);
